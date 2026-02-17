@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama_data:/var/lib/ollama
+    environment:
+      - OLLAMA_ALLOW_ROOT=true
