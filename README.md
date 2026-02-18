@@ -4,7 +4,7 @@
 [Master AI Agentic Engineering - build autonomous AI Agents](https://github.com/ed-donner/agents)
 
 ## Udemy
-[AI Engineer Production Track: Deploy LLMs & Agents at Scale](https://www.udemy.com/course/the-complete-agentic-ai-engineering-course/)
+[AI Engineer Agentic Track: The Complete Agent & MCP Course](https://www.udemy.com/course/the-complete-agentic-ai-engineering-course/)
 
 ## Local setup with uv (recommended)
 
