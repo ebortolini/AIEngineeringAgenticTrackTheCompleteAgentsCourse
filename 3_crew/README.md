@@ -19,3 +19,21 @@ Autonomous solutions with AI teams of Agents with different rules
 ### CrewAI Flows
 
 Stuctured automations by dividing complex tasks into precise workflows
+
+## Install
+
+```powershell
+uv tool install crewai
+```
+
+## Create a project
+
+```powershell
+crewai create crew my_crew
+```
+
+## Run
+
+```powershell
+crewai run
+```
