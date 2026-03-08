@@ -1,9 +1,11 @@
+import os
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import SerperDevTool
 from pydantic import BaseModel, Field
 from typing import List
 from .tools.push_tool import PushNotificationTool
+
 
 class TrendingCompany(BaseModel):
     """ A company that is in the news and attracting attention """
@@ -80,11 +82,14 @@ class StockPicker():
             config=self.agents_config['manager'],
             allow_delegation=True
         )
-            
+        
+        os.environ["CREWAI_STORAGE_DIR"] = os.path.abspath("./memory")
+
         return Crew(
             agents=self.agents,
             tasks=self.tasks, 
             process=Process.hierarchical,
             verbose=True,
-            manager_agent=manager
+            manager_agent=manager,
+            memory=True,
         )
