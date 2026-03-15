@@ -6,6 +6,11 @@ Agent workflows are represented by graphs.
 
 **_State_** represents the current snapshot of the application.
 
+ - Is immutable.
+ - For each field in State, you can specify a special function called reducer.
+ - When you return a new state, LangGraph uses the reducer to combine this field with existing state.
+ - This enables LangGraph to run multiple nodes concurrently and combines State without overwriting.
+
 **_Nodes_** are python functions that represent agent logic. They receive the current state as input, do something, and return an update state.
 
 **_Edges_** are python functions that determine which node to execute next based on the State. They can be conditional or fixed.
@@ -26,3 +31,4 @@ flowchart TD
   style B fill:#8B4A00,stroke:#FFA500,stroke-width:3px,color:#ffffff
   style C fill:#8B4A00,stroke:#FFA500,stroke-width:3px,color:#ffffff
 ```
+
