@@ -32,3 +32,12 @@ flowchart TD
   style C fill:#8B4A00,stroke:#FFA500,stroke-width:3px,color:#ffffff
 ```
 
+## Super Steps
+
+A super step can be considered a single iteration over the graph nodes. Nodes that run in parallel are parte of the same super step, while nodes that run sequentially are not.
+
+The graph describes one super step; one iteraction between agents and tools to achieve an outcome.
+
+Every user interaction is a fresh graph.invoke(sate) call
+
+The reducer handles updating state during a super step but not between super steps.
