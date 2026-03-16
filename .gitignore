@@ -208,3 +208,9 @@ __marimo__/
 
 # Custom
 1_foundations/me/
+
+#SQLite
+
+*.db
+*.db-shm
+*.db-wal
