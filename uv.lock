@@ -35,6 +35,7 @@ dependencies = [
     { name = "playwright" },
     { name = "pypdf" },
     { name = "python-dotenv" },
+    { name = "wikipedia" },
 ]
 
 [package.metadata]
@@ -56,6 +57,7 @@ requires-dist = [
     { name = "playwright", specifier = ">=1.58.0" },
     { name = "pypdf", specifier = ">=6.7.1" },
     { name = "python-dotenv", specifier = ">=1.2.1" },
+    { name = "wikipedia", specifier = ">=1.4.0" },
 ]
 
 [[package]]
@@ -4174,6 +4176,16 @@ sdist = { url = "https://files.pythonhosted.org/packages/2c/41/aa4bf9664e4cda14c
 wheels = [
     { url = "https://files.pythonhosted.org/packages/34/db/b10e48aa8fff7407e67470363eac595018441cf32d5e1001567a7aeba5d2/websocket_client-1.9.0-py3-none-any.whl", hash = "sha256:af248a825037ef591efbf6ed20cc5faa03d3b47b9e5a2230a529eeee1c1fc3ef", size = 82616, upload-time = "2025-10-07T21:16:34.951Z" },
 ]
+
+[[package]]
+name = "wikipedia"
+version = "1.4.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "beautifulsoup4" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/67/35/25e68fbc99e672127cc6fbb14b8ec1ba3dfef035bf1e4c90f78f24a80b7d/wikipedia-1.4.0.tar.gz", hash = "sha256:db0fad1829fdd441b1852306e9856398204dc0786d2996dd2e0c8bb8e26133b2", size = 27748, upload-time = "2014-11-15T15:59:49.808Z" }
 
 [[package]]
 name = "xxhash"
