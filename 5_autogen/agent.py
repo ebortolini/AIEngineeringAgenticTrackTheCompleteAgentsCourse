@@ -8,8 +8,6 @@ import messages
 import random
 from dotenv import load_dotenv
 
-load_dotenv(override=True)
-
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
 class Agent(RoutedAgent):
