@@ -1,8 +1,10 @@
 {
   "name": "AI Engineering Agentic Track",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "dockerComposeFile": [
+    "compose.yaml"
+  ],
+  "service": "mcp-fetch",
+  "workspaceFolder": "/workspaces/",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {},
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
@@ -10,7 +12,7 @@
   "runArgs": [
     "--init"
   ],
-  "postCreateCommand": "pip install --disable-pip-version-check uv && uv sync",
+  "postCreateCommand": "pip install --disable-pip-version-check uv && uv sync && .venv/bin/python -m ipykernel install --user --name ai-engineering-agentic-track --display-name 'Python (.venv)'",
   "remoteEnv": {
     "PYTHONUNBUFFERED": "1",
     "PIP_DISABLE_PIP_VERSION_CHECK": "1"
@@ -23,7 +25,7 @@
         "ms-toolsai.jupyter"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/workspaces/${localWorkspaceFolderBasename}/.venv/bin/python",
+        "python.defaultInterpreterPath": "/workspaces/.venv/bin/python",
         "jupyter.jupyterServerType": "local"
       }
     }

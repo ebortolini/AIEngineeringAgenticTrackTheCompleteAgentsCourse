@@ -1,4 +1,11 @@
-FROM mcr.microsoft.com/devcontainers/python:1-3.11-bookworm
+FROM python:3.12.1-slim-bullseye
+USER root
 
-# Remove the stale Yarn apt source from the base image so feature installs can run apt safely.
-RUN rm -f /etc/apt/sources.list.d/yarn.list /usr/share/keyrings/yarn-archive-keyring.gpg
+RUN apt-get update && \
+    apt-get -y install --reinstall ca-certificates && \
+    apt-get -y install software-properties-common && \
+    pip install --upgrade pip
+
+# Install Basic Packages
+RUN pip install ipykernel jupyter
+
