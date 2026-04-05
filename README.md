@@ -52,6 +52,27 @@ uv run python -m ipykernel install --user --name ai-engineering-agentic-track --
 
 Then select that kernel inside VS Code/Jupyter.
 
+## Dev Container setup
+
+If you are working with MCP servers on Windows, using a devcontainer is often more reliable because the notebook kernel runs in Linux.
+
+This repository now includes `.devcontainer/devcontainer.json`.
+
+Use it like this in VS Code:
+
+```text
+Dev Containers: Reopen in Container
+```
+
+Once the container is built:
+
+```bash
+uv run jupyter lab
+docker compose -f 6_mcp/mcp_fetch_docker/docker-compose.yml up -d --build
+```
+
+For `6_mcp/1_lab1.ipynb`, the MCP fetch server should be reached through Docker stdio using `docker exec -i mcp-fetch python -m mcp_server_fetch`, not through an HTTP port.
+
 ### Common commands
 
 ```powershell
