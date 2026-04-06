@@ -10,4 +10,8 @@ RUN apt-get update \
  && python3 -m pip install ipykernel jupyter \
  && rm -rf /var/lib/apt/lists/*
 
+# Preinstall MCP servers and Playwright browsers
+RUN npm install -g @modelcontextprotocol/server-filesystem @playwright/mcp@latest playwright \
+ && npx playwright install --with-deps
+
 USER root
