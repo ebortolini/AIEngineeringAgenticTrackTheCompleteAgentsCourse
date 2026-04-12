@@ -1,4 +1,10 @@
-from polygon import StocksClient, ReferenceClient
+try:
+    from polygon import StocksClient, ReferenceClient
+    RESTClient = None
+except ImportError:
+    from polygon import RESTClient
+    StocksClient = None
+    ReferenceClient = None
 from dotenv import load_dotenv
 import os
 from datetime import datetime
@@ -16,15 +22,27 @@ is_paid_polygon = polygon_plan == "paid"
 is_realtime_polygon = polygon_plan == "realtime"
 
 
+def _make_reference_client():
+    if ReferenceClient is not None:
+        return ReferenceClient(polygon_api_key)
+    return RESTClient(polygon_api_key)
+
+
+def _make_stocks_client():
+    if StocksClient is not None:
+        return StocksClient(polygon_api_key)
+    return RESTClient(polygon_api_key)
+
+
 def is_market_open() -> bool:
-    client = ReferenceClient(polygon_api_key)
+    client = _make_reference_client()
     market_status = client.get_market_status()
     return market_status.market == "open"
 
 
 def get_all_share_prices_polygon_eod() -> dict[str, float]:
     """With much thanks to student Reema R. for fixing the timezone issue with this!"""
-    client = StocksClient(polygon_api_key)
+    client = _make_stocks_client()
 
     probe = client.get_previous_close_agg("SPY")[0]
     last_close = datetime.fromtimestamp(probe.timestamp / 1000, tz=timezone.utc).date()
@@ -49,7 +67,7 @@ def get_share_price_polygon_eod(symbol) -> float:
 
 
 def get_share_price_polygon_min(symbol) -> float:
-    client = RESTClient(polygon_api_key)
+    client = _make_stocks_client()
     result = client.get_snapshot_ticker("stocks", symbol)
     return result.min.close or result.prev_day.close
 
